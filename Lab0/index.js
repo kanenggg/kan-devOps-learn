@@ -1,11 +1,11 @@
 import express from "express"
 
-const app = express();
+const app = express()
 
-app.get("/", (req,res) =>{
-    res.send("Hello World")
-});
+app.get("/", (req, res) => {
+  res.send("Hello Docker")
+})
 
-app.listen(3000, ()=> {
-    console.log("Server is running")
+app.listen(3000, "0.0.0.0", () => {
+  console.log("Server running on port 3000")
 })
