@@ -1,0 +1,36 @@
+name: First Workflow
+
+on:
+  push:
+    branches:
+      - Lab1
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker images
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          tags: myapp:v1
+
+      - name: Stop Container
+        run: |
+          docker stop myapp:v1 || true
+          docker rm myapp:v1
+          
+      - name: Start Containera
+        run:
+          docker run -d -p 3000:3000 --name myapp myapp:v1
