@@ -19,7 +19,7 @@ jobs:
       - name: Stop Container
         run: |
           docker stop myapp || true
-          docker rm myapp
+          docker rm myapp || true
           
       - name: Start Containera
         run:
