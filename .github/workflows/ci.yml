@@ -20,6 +20,9 @@ jobs:
         env: 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: http://34.57.226.101:9000
+          args: >
+            -Dsonar.projectKey=myapp
+            -Dsonar.sources=.
 
       - name: Build Docker
         run: docker build -t kanengggg/myapp:v1 ./Lab0
