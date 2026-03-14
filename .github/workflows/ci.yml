@@ -3,7 +3,7 @@ name: First Workflow
 on:
   push:
     branches:
-      - Lab1
+      - Lab2
 
 jobs:
   build:
