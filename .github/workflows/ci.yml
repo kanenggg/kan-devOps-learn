@@ -15,12 +15,14 @@ jobs:
         
         - name: Sonar Scan
           uses: SonarSource/sonarqube-scan-action@v2
+          with:
+            projectBaseDir: Lab0
           env:
             SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-        - name: Build Docker Images
-          run: docker build -t kanenggg/myapp:v1 .
+        - name: Build Docker Image
+          run: docker build -t ${{ secrets.DOCKER_USERNAME }}/myapp:${{ github.sha }} ./Lab0
 
         - name: Login To Docker Hub
           uses: docker/login-action@v3
@@ -28,5 +30,5 @@ jobs:
                 username: ${{ secrets.DOCKER_USERNAME }}
                 password: ${{ secrets.DOCKER_PASSWORD }}
 
-        - name: Push Docker Images
-          run: docker push kanenggg/myapp:v1
+        - name: Push Docker Image
+          run: docker push ${{ secrets.DOCKER_USERNAME }}/myapp:${{ github.sha }}
