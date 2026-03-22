@@ -13,7 +13,7 @@ spec:
         app: myapp
     spec:
       containers:
-        - name: lab4
+        - name: myapp
           image: kansumware/myapp:latest
           ports:
             - containerPort: 3000
