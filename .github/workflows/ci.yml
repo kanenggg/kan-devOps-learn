@@ -52,8 +52,8 @@ jobs:
 
         - name: Deploy to Minikube
           run: |
-           kubectl apply -f k8s/deployment.yaml
-           kubectl apply -f k8s/service.yaml
+           kubectl apply -f ./Lab0/deployment.yaml
+           kubectl apply -f ./Lab0/service.yaml
 
         - name: Update Image
           run: kubectl set image deployment/myapp myapp=${{ secrets.DOCKER_USERNAME }}/myapp:latest
