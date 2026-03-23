@@ -73,5 +73,5 @@ jobs:
            fuser -k 30010/tcp || true
            sleep 2
            # 3. รัน port-forward ใหม่
-           kubectl port-forward --address 0.0.0.0 service/myapp-service 30010:80 &
+           kubectl port-forward --address 0.0.0.0 service/myapp-service 30010:80
         
