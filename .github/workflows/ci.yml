@@ -6,7 +6,7 @@ on:
             - Lab3
 
 jobs:
-    CI:
+    github:
         runs-on: ubuntu-latest
         steps:
             - name: ChceckOut
@@ -34,10 +34,11 @@ jobs:
 
     CD:
         runs-on: self-hosted
-        steps:  
+        needs: github
+        steps:
             - name: Pull Docker Image
               run: docker pull ${{ secrets.DOCKER_USERNAME }}/myapp:${{ github.sha }}
-
+  
             - name: Stop Container
               run: docker stop myapp || true
 
