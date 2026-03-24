@@ -6,9 +6,8 @@ on:
             - Lab3
 
 jobs:
-    build:
-        runs-on: self-hosted
-
+    CI:
+        runs-on: ubuntu-latest
         steps:
             - name: ChceckOut
               uses: actions/checkout@v4
@@ -29,10 +28,13 @@ jobs:
               with:
                 username: ${{ secrets.DOCKER_USERNAME }}
                 password: ${{ secrets.DOCKER_PASSWORD }}
-            
+         
             - name: Push Docker Image
               run: docker push ${{ secrets.DOCKER_USERNAME }}/myapp:${{ github.sha }}
 
+    CD:
+        runs-on: self-hosted
+        steps:  
             - name: Pull Docker Image
               run: docker pull ${{ secrets.DOCKER_USERNAME }}/myapp:${{ github.sha }}
 
