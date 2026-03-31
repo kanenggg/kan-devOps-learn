@@ -1,9 +1,12 @@
 import express from "express"
 
-const app = express()
 
-app.get("/", (req, res) => {
-  res.send("Hello Docker")
+const app = express()
+const os = require(os)
+const express = require("express")
+
+app.use("/", async(req, res) =>{
+  res.json({message: "I LOVE YOU 3000 from", hostname: `${os.hostname}`})
 })
 
 app.listen(3000, "0.0.0.0", () => {
