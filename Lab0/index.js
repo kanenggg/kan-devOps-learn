@@ -3,7 +3,6 @@ import express from "express"
 
 const app = express()
 const os = require(os)
-const express = require("express")
 
 app.use("/", async(req, res) =>{
   res.json({message: "I LOVE YOU 3000 from", hostname: `${os.hostname}`})
