@@ -1,10 +1,10 @@
 import express from "express"
-import os from "os"
+import os from "os"          // ← แก้จาก require(os)
 
 const app = express()
 
 app.use("/", async (req, res) => {
-  res.json({ message: "I LOVE YOU 3000 from", hostname: `${os.hostname()}` })
+  res.json({ message: "I LOVE YOU 3000 from", hostname: os.hostname() })
 })
 
 app.listen(3000, "0.0.0.0", () => {
