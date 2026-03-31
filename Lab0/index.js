@@ -1,11 +1,10 @@
 import express from "express"
-
+import os from "os"
 
 const app = express()
-const os = require(os)
 
-app.use("/", async(req, res) =>{
-  res.json({message: "I LOVE YOU 3000 from", hostname: `${os.hostname}`})
+app.use("/", async (req, res) => {
+  res.json({ message: "I LOVE YOU 3000 from", hostname: `${os.hostname()}` })
 })
 
 app.listen(3000, "0.0.0.0", () => {
